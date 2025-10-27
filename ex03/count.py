@@ -28,11 +28,16 @@ def details(arg:str)-> None:
     print(f"Space characters: {space_count}")
 
 
-def text_analyzer(arg: str)->None:
+def text_analyzer()->None:
 
     try:
-        assert arg, "What is the text to analyze?"
-        assert isinstance(arg, str)
+        if(len(sys.argv[1:]) != 1):
+            print("What is the text to analyze?")
+            arg = input(">> ")
+        else:
+            arg: str = sys.argv[1]
+        assert arg, "Empty Arguments"
+        assert isinstance(arg, str), "argument is not a string"
         if (arg.isdigit()):
             raise ValueError("argument is not a string")
         details(arg).__doc__
@@ -41,17 +46,14 @@ def text_analyzer(arg: str)->None:
         print(f"AssertionError: {e}", file=sys.stderr)
     except ValueError as e:
         print(f"AssertionError: {e}", file=sys.stderr)
+    except TypeError as e:
+        print(e, file=sys.stderr);
 
 def main() -> None:
-    args:list = sys.argv[1:]
-    if (len(args) > 1):
+    if (len(sys.argv[1:]) > 1):
         print("Too many arguments provided", file=sys.stderr)
         return
-    text_analyzer(args[0])
+    text_analyzer()
 
 if (__name__ == "__main__"):
     main()
-
-#>>> text_analyzer()
-#>> Hello World!
-#>>> text_analyzer(42)
