@@ -2,19 +2,20 @@ cookbook = {
     "sandwich": {
         "ingredients": ["ham", "bread", "cheese", "tomatoes"],
         "meal": "lunch",
-        "prep_time": 10
+        "prep_time": 10,
     },
     "cake": {
         "ingredients": ["flour", "sugar", "eggs"],
         "meal": "dessert",
-        "prep_time": 60
+        "prep_time": 60,
     },
     "salad": {
         "ingredients": ["avocado", "arugula", "tomatoes", "spinach"],
         "meal": "lunch",
-        "prep_time": 15
-    }
+        "prep_time": 15,
+    },
 }
+
 
 def print_recipe_names():
     """Print all recipe names in the cookbook."""
@@ -81,12 +82,9 @@ def add_recipe():
         print("Preparation time must be a non-negative integer.")
         return
 
-    cookbook[name] = {
-        "ingredients": ingredients,
-        "meal": meal,
-        "prep_time": prep_time
-    }
+    cookbook[name] = {"ingredients": ingredients, "meal": meal, "prep_time": prep_time}
     print(f"Recipe '{name}' added successfully!\n")
+
 
 def print_options():
     print("List of available options:")
@@ -110,7 +108,9 @@ def main():
                     name = input("Please enter a recipe name to delete:\n>> ").strip()
                     delete_recipe(name)
                 case "3":
-                    name = input("Please enter a recipe name to get its details:\n>> ").strip()
+                    name = input(
+                        "Please enter a recipe name to get its details:\n>> "
+                    ).strip()
                     print_recipe_details(name)
                 case "4":
                     print_recipe_names()

@@ -1,18 +1,15 @@
 from time import sleep
 from tqdm import tqdm
 
+
 def ft_progress(lst):
     return tqdm(
         iterable=lst,
         ncols=80,
         smoothing=1,
         ascii=" >=",
-        bar_format="ETA {remaining} [{percentage:2.0f}%] [{bar}] {n_fmt}/{total_fmt} | elapsed time {elapsed}s"
+        bar_format="ETA {remaining} [{percentage:2.0f}%] [{bar}] {n_fmt}/{total_fmt} | elapsed time {elapsed}s",
     )
-
-    
-
-
 
 
 listy = range(1000)

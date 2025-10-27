@@ -1,11 +1,13 @@
 kata = {
-'Python': 'Guido van Rossum',
-'Ruby': 'Yukihiro Matsumoto',
-'PHP': 'Rasmus Lerdorf',
+    "Python": "Guido van Rossum",
+    "Ruby": "Yukihiro Matsumoto",
+    "PHP": "Rasmus Lerdorf",
 }
 
-def main()->None:
+
+def main() -> None:
     print(*(f"{k} was created {v}" for k, v in kata.items()), sep="\n")
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     main()
