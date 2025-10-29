@@ -1,15 +1,23 @@
 from time import sleep
-from tqdm import tqdm
-
+import sys
+import time
 
 def ft_progress(lst):
-    return tqdm( #FORBIDDEN
-        iterable=lst,
-        ncols=80,
-        smoothing=1,
-        ascii=" >=",
-        bar_format="ETA {remaining} [{percentage:2.0f}%] [{bar}] {n_fmt}/{total_fmt} | elapsed time {elapsed}s",
-    )
+    total = len(lst)
+    start_time = time.time()
+    
+    for i, elem in enumerate(lst):
+        elapsed = time.time() - start_time
+        percent = 100 * (i + 1) / total
+        bar_length = 20
+        filled_length = int(bar_length * (i + 1) / total)
+        bar = "=" * (filled_length - 1) + ">" + " " * (bar_length - filled_length)
+        sys.stdout.write(
+            f"\rETA {elapsed:.2f}s [{percent:2.0f}%] [{bar}] {i+1}/{total} | elapsed time {elapsed:.2f}s"
+        )
+        sys.stdout.flush()
+        yield elem
+    print()
 
 
 listy = range(1000)
