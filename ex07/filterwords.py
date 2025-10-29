@@ -15,7 +15,7 @@ def main() -> None:
         final_tab: list = []
 
         for word in tab:
-            filtered_chars = filter(str.isalpha, word)
+            filtered_chars = filter(str.isalpha, word) #FORBIDDEN
             word = "".join(filtered_chars)
             if len(word) > int(args[1]):
                 final_tab.append(word)
